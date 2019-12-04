@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.js"></script> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.js"></script>
+    <script src="https://masonry.desandro.com/masonry.pkgd.js"></script>
+
+    <!-- or -->
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        h1 {
+            font-size: 18px;
+        }
+
+        /* force scrollbar */
+        html {
+            overflow-y: scroll;
+        }
+
+        body {
+            font-family: sans-serif;
+        }
+
+        /* ---- grid ---- */
+
+        .grid {
+            margin: 0 auto;
+        }
+
+        /* clear fix */
+        .grid:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+        /* ---- .grid-item ---- */
+
+        .grid-sizer,
+        .grid-item {
+            width: 32.3333333%;
+        }
+
+        .grid-item {
+            float: left;
+            margin-bottom: 10px;
+
+        }
+
+        .grid-item img {
+            display: block;
+            max-width: 100%;
+        }
+
+        @media only screen and (max-width:768px) {
+
+            .grid-sizer,
+            .grid-item {
+                width:48%;
+            }
+        }
+  
+        @media only screen and (max-width:375px) {
+            .grid-sizer,
+            .grid-item {
+                width:100%;
+            }
+    }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+            <h1>Masonry Grid Example</h1>
+        <div class="grid">
+            <div class="grid-sizer"></div>
+            <div class="grid-item">
+                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/orange-tree.jpg" />
+            </div>
+            <div class="grid-item">
+                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/submerged.jpg" />
+            </div>
+            <div class="grid-item">
+                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/look-out.jpg" />
+            </div>
+            <div class="grid-item">
+                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/one-world-trade.jpg" />
+            </div>
+            <div class="grid-item">
+                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/drizzle.jpg" />
+            </div>
+            <div class="grid-item">
+                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/cat-nose.jpg" />
+            </div>
+            <div class="grid-item">
+                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/contrail.jpg" />
+            </div>
+            <div class="grid-item">
+                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/golden-hour.jpg" />
+            </div>
+            <div class="grid-item">
+                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/flight-formation.jpg" />
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js">
+    </script>
+    <script>
+
+        // external js: masonry.pkgd.js, imagesloaded.pkgd.js
+
+        // init Masonry
+        var grid = document.querySelector('.grid');
+
+        var msnry = new Masonry(grid, {
+            itemSelector: '.grid-item',
+            columnWidth: '.grid-sizer',
+            percentPosition: true,
+            gutter: 15
+        });
+
+        imagesLoaded(grid).on('progress', function () {
+            // layout Masonry after each image loads
+            msnry.layout();
+        });
+
+
+    </script>
+</body>
+
+</html>
